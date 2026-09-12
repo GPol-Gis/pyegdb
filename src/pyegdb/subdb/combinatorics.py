@@ -86,6 +86,19 @@ def colex_unrank(rank: int, k: int, n: int) -> tuple[int, ...]:
     return tuple(result)
 
 
+def colex_unrank_linear(rank: int, k: int, n: int):
+    result = [0] * k
+    upper = n - 1
+    for i in range(k, 0, -1):
+        # find largest x <= upper with C(x,i) <= rank
+        while comb(upper, i) > rank:
+            upper -= 1
+        result[i - 1] = upper
+        rank -= comb(upper, i)
+        upper -= 1
+    return tuple(result)
+
+
 def king_radix(mat: Material, square_count: int) -> int:
     """Calculate the number of ways to place kings on remaining squares."""
     king_sqs = square_count - mat.bm - mat.wm
