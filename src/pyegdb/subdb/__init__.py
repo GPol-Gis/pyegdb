@@ -19,7 +19,7 @@
 from __future__ import annotations
 
 from ._ranking import rank, rank_constrained, rank_unconstrained
-from ._size import size
+from ._size import overlap_rows, size
 from ._unranking import (
     unrank,
     unrank_constrained,
@@ -27,6 +27,7 @@ from ._unranking import (
 )
 
 __all__ = [
+    "overlap_rows",
     "rank",
     "rank_constrained",
     "rank_unconstrained",
